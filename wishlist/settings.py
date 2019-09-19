@@ -25,7 +25,7 @@ SECRET_KEY = 'b8)qnvq9=(0ty3r#xbvp4jwx!c*3^zcpjz*5dri$l(ha=b&t83'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wishlist.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['wishlist-vista.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
