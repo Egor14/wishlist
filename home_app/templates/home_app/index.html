@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body style="padding-left: 20%; padding-right: 20%">
+<h1>Список желаний</h1>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Добавить новое желание
+  </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="/add/" method="post">
+            {% csrf_token %}
+      <div class="row">
+            <div class="col-3">
+              <input name="name" type="text" class="form-control" placeholder="Название">
+            </div>
+            <div class="col-3">
+              <input name="price" type="number" class="form-control" placeholder="Цена">
+            </div>
+                  <div class="col-3">
+              <input name="link" type="text" class="form-control" placeholder="Ссылка">
+            </div>
+      </div>
+    <br>
+    <div class="col-6">
+        <textarea name="comment" class="form-control" placeholder="Комментарий"></textarea>
+    </div>
+            <br>
+          <button type="submit" class="btn btn-primary">Добавить</button>
+
+        </form>
+
+  </div>
+</div>
+    {% for i in wish_list %}
+        <h4>{{ i.name }}</h4>
+        <ul>
+            <li>{{ i.price }}</li>
+            <li><a href="{{ i.link }}">Где купить</a></li>
+            <li>{{ i.comment }}</li>
+        </ul>
+        <a href="/{{ i.id }}"><button type="button" class="btn btn-success">Цель достигнута</button></a>
+    {% endfor %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
